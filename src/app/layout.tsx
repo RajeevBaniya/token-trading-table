@@ -3,8 +3,8 @@ import './globals.css'
 import Providers from './providers'
 
 export const metadata: Metadata = {
-  title: 'Token Trading Table',
-  description: 'Axiom Trade Pulse Replica',
+  title: 'pulseboard',
+  description: 'Token trading dashboard',
 }
 
 export default function RootLayout({
