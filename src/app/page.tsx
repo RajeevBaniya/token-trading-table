@@ -1,10 +1,16 @@
-export default function Home() {
+'use client';
+
+import { TokenTable } from '@/components/token-table/TokenTable';
+import { useTokenBootstrap } from '@/hooks/useTokenBootstrap';
+
+function Home() {
+  useTokenBootstrap();
+
   return (
     <main className="min-h-screen bg-gray-900 text-white">
-      <div className="container mx-auto p-4">
-        <h1 className="text-2xl font-bold">Pulseboard</h1>
-      </div>
+      <TokenTable />
     </main>
-  )
+  );
 }
 
+export default Home;
