@@ -1,3 +1,44 @@
-// Token domain types
-// Will be implemented in Phase 2
+export type TokenCategory = 'new' | 'final' | 'migrated';
 
+export type PriceDirection = 'up' | 'down' | 'neutral';
+
+export interface RawTokenData {
+  readonly id: string;
+  readonly name: string;
+  readonly symbol: string;
+  readonly image: string;
+  readonly price: number;
+  readonly marketCap: number;
+  readonly volume24h: number;
+  readonly change1h: number;
+  readonly change24h: number;
+}
+
+export interface RawTokensData {
+  readonly new: readonly RawTokenData[];
+  readonly final: readonly RawTokenData[];
+  readonly migrated: readonly RawTokenData[];
+}
+
+export interface Token {
+  readonly id: string;
+  readonly name: string;
+  readonly symbol: string;
+  readonly image: string;
+  readonly price: number;
+  readonly prevPrice: number;
+  readonly priceDirection: PriceDirection;
+  readonly marketCap: number;
+  readonly volume24h: number;
+  readonly change1h: number;
+  readonly change24h: number;
+  readonly category: TokenCategory;
+}
+
+export type TokenMap = Readonly<Record<string, Token>>;
+
+export interface TokensByCategory {
+  readonly new: readonly Token[];
+  readonly final: readonly Token[];
+  readonly migrated: readonly Token[];
+}
