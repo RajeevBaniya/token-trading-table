@@ -75,6 +75,10 @@ function sortTokensReducer(
 ): TokenState {
   const tokenArray = Object.values(state.tokens);
   let sortedTokens: readonly Token[];
+  
+  // Note: Sorting is global across all categories.
+  // All columns share the same sortedIds order.
+  // This means clicking sort in any column affects the order in all columns.
 
   switch (action.payload.sortBy) {
     case 'marketCap':
