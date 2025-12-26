@@ -11,16 +11,16 @@ function Home() {
   useTokenBootstrap();
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col">
+    <div className="h-screen bg-black text-white flex flex-col overflow-hidden">
       <Header />
-      <main className="flex-1 pb-16 md:pb-0">
+      <main className="flex-1 overflow-hidden">
         <ErrorBoundary>
           <TokenTable />
         </ErrorBoundary>
       </main>
       <Footer />
       <MobileBottomNav />
-    </div>
+      </div>
   );
 }
 
