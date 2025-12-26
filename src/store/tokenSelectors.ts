@@ -1,3 +1,4 @@
+import { createSelector } from '@reduxjs/toolkit';
 import type { RootState } from './index';
 import type { Token, TokenCategory } from '@/domain/token/token.types';
 
@@ -25,13 +26,16 @@ function selectTokenById(state: RootState, tokenId: string): Token | undefined {
   return state.token.tokens[tokenId];
 }
 
-function selectTokensByCategory(
-  state: RootState,
-  category: TokenCategory
-): readonly Token[] {
-  const tokens = Object.values(state.token.tokens);
-  return tokens.filter((token) => token.category === category);
-}
+const selectTokensByCategory = createSelector(
+  [
+    (state: RootState) => state.token.tokens,
+    (_state: RootState, category: TokenCategory) => category,
+  ],
+  (tokens, category): readonly Token[] => {
+    const tokenArray = Object.values(tokens);
+    return tokenArray.filter((token) => token.category === category);
+  }
+);
 
 function selectSortedTokens(state: RootState): readonly Token[] {
   const tokens = Object.values(state.token.tokens);
@@ -52,4 +56,3 @@ export {
   selectTokensByCategory,
   selectSortedTokens,
 };
-
