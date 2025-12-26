@@ -7,6 +7,9 @@ interface PriceCellProps {
 }
 
 function formatPrice(value: number): string {
+  if (value >= 1000) {
+    return `$${(value / 1000).toFixed(2)}K`;
+  }
   if (value >= 1) {
     return `$${value.toFixed(2)}`;
   }
@@ -28,7 +31,7 @@ function PriceCell({ price, priceDirection }: PriceCellProps) {
   };
 
   return (
-    <div className={`text-sm font-medium rounded px-2 py-1 ${getColorClasses()}`}>
+    <div className={`text-xs sm:text-sm font-semibold rounded px-1.5 sm:px-2 py-0.5 sm:py-1 inline-block ${getColorClasses()}`}>
       {formatPrice(price)}
     </div>
   );

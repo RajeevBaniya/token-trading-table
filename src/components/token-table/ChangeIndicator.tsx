@@ -13,7 +13,7 @@ function formatChange(value: number): string {
 
 function ChangeIndicator({ change1h, change24h }: ChangeIndicatorProps) {
   return (
-    <div className="flex flex-col gap-1 text-xs">
+    <div className="flex flex-col gap-0.5 sm:gap-1 text-[10px] sm:text-xs">
       <span className={change1h >= 0 ? 'text-green-400' : 'text-red-400'}>
         {formatChange(change1h)}
       </span>
