@@ -1,242 +1,262 @@
 {
-    "new": [
-      {
-        "id": "2moon",
-        "name": "2MOON",
-        "symbol": "moon",
-        "image": "https://coin-images.coingecko.com/coins/images/32194/large/2MOON.jpg",
-        "price": 0.000000861,
-        "marketCap": 86000000,
-        "volume24h": 33173,
-        "change1h": -0.01,
-        "change24h": -0.49
-      },
-      {
-        "id": "1rus-dao",
-        "name": "1RUS DAO",
-        "symbol": "1rusd",
-        "image": "https://coin-images.coingecko.com/coins/images/38082/large/photo_2023-12-08_12-58-58.png",
-        "price": 0.0000547,
-        "marketCap": 43000000,
-        "volume24h": 2.97,
-        "change1h": 0.06,
-        "change24h": 0.81
-      },
-      {
-        "id": "9mm",
-        "name": "9mm",
-        "symbol": "9mm",
-        "image": "https://coin-images.coingecko.com/coins/images/54791/large/9mm.jpg",
-        "price": 0.00818,
-        "marketCap": 2400000,
-        "volume24h": 6472,
-        "change1h": 2.25,
-        "change24h": -1.51
-      },
-      {
-        "id": "aastoken",
-        "name": "AASToken",
-        "symbol": "aast",
-        "image": "https://coin-images.coingecko.com/coins/images/35717/large/IMG_8288.JPG.jpg",
-        "price": 0.00146,
-        "marketCap": 14000000,
-        "volume24h": 3665,
-        "change1h": -0.01,
-        "change24h": -2.3
-      },
-      {
-        "id": "9inch",
-        "name": "9inch",
-        "symbol": "9inch",
-        "image": "https://coin-images.coingecko.com/coins/images/32662/large/9INCH-logo.png",
-        "price": 0.000000415,
-        "marketCap": 410000,
-        "volume24h": 9494,
-        "change1h": -0.43,
-        "change24h": -4.53
-      },
-      {
-        "id": "9-5",
-        "name": "9to5",
-        "symbol": "9-5",
-        "image": "https://coin-images.coingecko.com/coins/images/38143/large/9-5_Token.png",
-        "price": 0.00000986,
-        "marketCap": 980000,
-        "volume24h": 3.8,
-        "change1h": -0.04,
-        "change24h": 0.22
-      },
-      {
-        "id": "5mc",
-        "name": "5mc",
-        "symbol": "5mc",
-        "image": "https://coin-images.coingecko.com/coins/images/32862/large/5mc_200X200.png",
-        "price": 0.0000129,
-        "marketCap": 320000,
-        "volume24h": 15,
-        "change1h": 0,
-        "change24h": 0
-      }
-    ],
-  
-    "final": [
-      {
-        "id": "1000bonk",
-        "name": "1000BONK",
-        "symbol": "1000bonk",
-        "image": "https://coin-images.coingecko.com/coins/images/33829/large/bonk_%281%29.png",
-        "price": 0.00778,
-        "marketCap": 730000000000,
-        "volume24h": 924607,
-        "change1h": -0.6,
-        "change24h": -2.6
-      },
-      {
-        "id": "1mbabydoge",
-        "name": "1MBABYDOGE",
-        "symbol": "1mbabydoge",
-        "image": "https://coin-images.coingecko.com/coins/images/52465/large/babydoge.jpg",
-        "price": 0.000574,
-        "marketCap": 240000000000000,
-        "volume24h": 828871,
-        "change1h": 0.34,
-        "change24h": -1.6
-      },
-      {
-        "id": "1000chems",
-        "name": "1000CHEMS",
-        "symbol": "1000cheems",
-        "image": "https://coin-images.coingecko.com/coins/images/52984/large/1000chems.jpg",
-        "price": 0.000923,
-        "marketCap": 200000000000,
-        "volume24h": 1371482,
-        "change1h": 0.59,
-        "change24h": -1.53
-      },
-      {
-        "id": "1000cat",
-        "name": "1000CAT",
-        "symbol": "1000cat",
-        "image": "https://coin-images.coingecko.com/coins/images/52824/large/cat.jpg",
-        "price": 0.00263,
-        "marketCap": 50000000,
-        "volume24h": 426139,
-        "change1h": 0.6,
-        "change24h": 0.06
-      },
-      {
-        "id": "4-next-unicorn",
-        "name": "4 Next Unicorn",
-        "symbol": "nxtu",
-        "image": "https://coin-images.coingecko.com/coins/images/33061/large/4_Next_Unicorn_LOGO.png",
-        "price": 0.00351,
-        "marketCap": 350000,
-        "volume24h": 29995,
-        "change1h": -8.59,
-        "change24h": -17.55
-      },
-      {
-        "id": "8-bit-coin",
-        "name": "8-Bit Coin",
-        "symbol": "coin",
-        "image": "https://coin-images.coingecko.com/coins/images/39995/large/2024-08-29_20.42.45.jpg",
-        "price": 0.0000313,
-        "marketCap": 3100000,
-        "volume24h": 3.9,
-        "change1h": 0.009,
-        "change24h": -0.73
-      },
-      {
-        "id": "2g-carbon-coin",
-        "name": "2G Carbon Coin",
-        "symbol": "2gcc",
-        "image": "https://coin-images.coingecko.com/coins/images/27514/large/Ojh3Dm3-_400x400.jpeg",
-        "price": 0.000413,
-        "marketCap": 41000000,
-        "volume24h": 1504,
-        "change1h": -0.01,
-        "change24h": -0.03
-      }
-    ],
-  
-    "migrated": [
-      {
-        "id": "1hive-water",
-        "name": "1Hive Water",
-        "symbol": "water",
-        "image": "https://coin-images.coingecko.com/coins/images/26089/large/water_logo.png",
-        "price": 0.06518,
-        "marketCap": 51000,
-        "volume24h": 29,
-        "change1h": -0.05,
-        "change24h": 0.46
-      },
-      {
-        "id": "1inch-yvault",
-        "name": "1INCH yVault",
-        "symbol": "yv1inch",
-        "image": "https://coin-images.coingecko.com/coins/images/28795/large/yv1INCH-128.png",
-        "price": 0.161,
-        "marketCap": 10000,
-        "volume24h": 0,
-        "change1h": -0.25,
-        "change24h": -0.9
-      },
-      {
-        "id": "2dai-io",
-        "name": "2DAI.io",
-        "symbol": "2dai",
-        "image": "https://coin-images.coingecko.com/coins/images/30542/large/2dai.jpg",
-        "price": 0.0000167,
-        "marketCap": 16000,
-        "volume24h": 1.3,
-        "change1h": 0,
-        "change24h": 0.55
-      },
-      {
-        "id": "4tb-coin",
-        "name": "4TB Coin",
-        "symbol": "4tb",
-        "image": "https://coin-images.coingecko.com/coins/images/39844/large/4TB_Logo.png",
-        "price": 0.000995,
-        "marketCap": 69000,
-        "volume24h": 200,
-        "change1h": 0,
-        "change24h": 0
-      },
-      {
-        "id": "5th-scape",
-        "name": "5th Scape",
-        "symbol": "$5scape",
-        "image": "https://coin-images.coingecko.com/coins/images/54304/large/Untitled_design_%2816%29.png",
-        "price": 0.0000717,
-        "marketCap": 370000,
-        "volume24h": 1415,
-        "change1h": -0.17,
-        "change24h": -0.21
-      },
-      {
-        "id": "4444-token",
-        "name": "4444",
-        "symbol": "4444",
-        "image": "https://coin-images.coingecko.com/coins/images/55067/large/4444.jpg",
-        "price": 0.0000249,
-        "marketCap": 24000,
-        "volume24h": 2.4,
-        "change1h": 0,
-        "change24h": -0.01
-      },
-      {
-        "id": "0x-leverage",
-        "name": "0x Leverage",
-        "symbol": "oxl",
-        "image": "https://coin-images.coingecko.com/coins/images/31977/large/Ox.jpeg",
-        "price": 0.000323,
-        "marketCap": 320000,
-        "volume24h": 12,
-        "change1h": 0,
-        "change24h": 0
-      }
-    ]
-  }
-  
+  "new": [
+    {
+      "id": "2moon",
+      "name": "2MOON",
+      "symbol": "moon",
+      "image": "https://coin-images.coingecko.com/coins/images/32194/large/2MOON.jpg",
+      "price": 0.000000861,
+      "marketCap": 86000000,
+      "volume24h": 33173,
+      "change1h": -0.01,
+      "change24h": -0.49,
+      "chain": "BNB"
+    },
+    {
+      "id": "1rus-dao",
+      "name": "1RUS DAO",
+      "symbol": "1rusd",
+      "image": "https://coin-images.coingecko.com/coins/images/38082/large/photo_2023-12-08_12-58-58.png",
+      "price": 0.0000547,
+      "marketCap": 43000000,
+      "volume24h": 2.97,
+      "change1h": 0.06,
+      "change24h": 0.81,
+      "chain": "BNB"
+    },
+    {
+      "id": "9mm",
+      "name": "9mm",
+      "symbol": "9mm",
+      "image": "https://coin-images.coingecko.com/coins/images/54791/large/9mm.jpg",
+      "price": 0.00818,
+      "marketCap": 2400000,
+      "volume24h": 6472,
+      "change1h": 2.25,
+      "change24h": -1.51,
+      "chain": "SOL"
+    },
+    {
+      "id": "aastoken",
+      "name": "AASToken",
+      "symbol": "aast",
+      "image": "https://coin-images.coingecko.com/coins/images/35717/large/IMG_8288.JPG.jpg",
+      "price": 0.00146,
+      "marketCap": 14000000,
+      "volume24h": 3665,
+      "change1h": -0.01,
+      "change24h": -2.3,
+      "chain": "SOL"
+    },
+    {
+      "id": "9inch",
+      "name": "9inch",
+      "symbol": "9inch",
+      "image": "https://coin-images.coingecko.com/coins/images/32662/large/9INCH-logo.png",
+      "price": 0.000000415,
+      "marketCap": 410000,
+      "volume24h": 9494,
+      "change1h": -0.43,
+      "change24h": -4.53,
+      "chain": "BNB"
+    },
+    {
+      "id": "9-5",
+      "name": "9to5",
+      "symbol": "9-5",
+      "image": "https://coin-images.coingecko.com/coins/images/38143/large/9-5_Token.png",
+      "price": 0.00000986,
+      "marketCap": 980000,
+      "volume24h": 3.8,
+      "change1h": -0.04,
+      "change24h": 0.22,
+      "chain": "SOL"
+    },
+    {
+      "id": "5mc",
+      "name": "5mc",
+      "symbol": "5mc",
+      "image": "https://coin-images.coingecko.com/coins/images/32862/large/5mc_200X200.png",
+      "price": 0.0000129,
+      "marketCap": 320000,
+      "volume24h": 15,
+      "change1h": 0,
+      "change24h": 0,
+      "chain": "BNB"
+    }
+  ],
+
+  "final": [
+    {
+      "id": "1000bonk",
+      "name": "1000BONK",
+      "symbol": "1000bonk",
+      "image": "https://coin-images.coingecko.com/coins/images/33829/large/bonk_%281%29.png",
+      "price": 0.00778,
+      "marketCap": 730000000000,
+      "volume24h": 924607,
+      "change1h": -0.6,
+      "change24h": -2.6,
+      "chain": "SOL"
+    },
+    {
+      "id": "1mbabydoge",
+      "name": "1MBABYDOGE",
+      "symbol": "1mbabydoge",
+      "image": "https://coin-images.coingecko.com/coins/images/52465/large/babydoge.jpg",
+      "price": 0.000574,
+      "marketCap": 240000000000000,
+      "volume24h": 828871,
+      "change1h": 0.34,
+      "change24h": -1.6,
+      "chain": "BNB"
+    },
+    {
+      "id": "1000chems",
+      "name": "1000CHEMS",
+      "symbol": "1000cheems",
+      "image": "https://coin-images.coingecko.com/coins/images/52984/large/1000chems.jpg",
+      "price": 0.000923,
+      "marketCap": 200000000000,
+      "volume24h": 1371482,
+      "change1h": 0.59,
+      "change24h": -1.53,
+      "chain": "BNB"
+    },
+    {
+      "id": "1000cat",
+      "name": "1000CAT",
+      "symbol": "1000cat",
+      "image": "https://coin-images.coingecko.com/coins/images/52824/large/cat.jpg",
+      "price": 0.00263,
+      "marketCap": 50000000,
+      "volume24h": 426139,
+      "change1h": 0.6,
+      "change24h": 0.06,
+      "chain": "SOL"
+    },
+    {
+      "id": "4-next-unicorn",
+      "name": "4 Next Unicorn",
+      "symbol": "nxtu",
+      "image": "https://coin-images.coingecko.com/coins/images/33061/large/4_Next_Unicorn_LOGO.png",
+      "price": 0.00351,
+      "marketCap": 350000,
+      "volume24h": 29995,
+      "change1h": -8.59,
+      "change24h": -17.55,
+      "chain": "BNB"
+    },
+    {
+      "id": "8-bit-coin",
+      "name": "8-Bit Coin",
+      "symbol": "coin",
+      "image": "https://coin-images.coingecko.com/coins/images/39995/large/2024-08-29_20.42.45.jpg",
+      "price": 0.0000313,
+      "marketCap": 3100000,
+      "volume24h": 3.9,
+      "change1h": 0.009,
+      "change24h": -0.73,
+      "chain": "SOL"
+    },
+    {
+      "id": "2g-carbon-coin",
+      "name": "2G Carbon Coin",
+      "symbol": "2gcc",
+      "image": "https://coin-images.coingecko.com/coins/images/27514/large/Ojh3Dm3-_400x400.jpeg",
+      "price": 0.000413,
+      "marketCap": 41000000,
+      "volume24h": 1504,
+      "change1h": -0.01,
+      "change24h": -0.03,
+      "chain": "BNB"
+    }
+  ],
+
+  "migrated": [
+    {
+      "id": "1hive-water",
+      "name": "1Hive Water",
+      "symbol": "water",
+      "image": "https://coin-images.coingecko.com/coins/images/26089/large/water_logo.png",
+      "price": 0.06518,
+      "marketCap": 51000,
+      "volume24h": 29,
+      "change1h": -0.05,
+      "change24h": 0.46,
+      "chain": "SOL"
+    },
+    {
+      "id": "1inch-yvault",
+      "name": "1INCH yVault",
+      "symbol": "yv1inch",
+      "image": "https://coin-images.coingecko.com/coins/images/28795/large/yv1INCH-128.png",
+      "price": 0.161,
+      "marketCap": 10000,
+      "volume24h": 0,
+      "change1h": -0.25,
+      "change24h": -0.9,
+      "chain": "BNB"
+    },
+    {
+      "id": "2dai-io",
+      "name": "2DAI.io",
+      "symbol": "2dai",
+      "image": "https://coin-images.coingecko.com/coins/images/30542/large/2dai.jpg",
+      "price": 0.0000167,
+      "marketCap": 16000,
+      "volume24h": 1.3,
+      "change1h": 0,
+      "change24h": 0.55,
+      "chain": "SOL"
+    },
+    {
+      "id": "4tb-coin",
+      "name": "4TB Coin",
+      "symbol": "4tb",
+      "image": "https://coin-images.coingecko.com/coins/images/39844/large/4TB_Logo.png",
+      "price": 0.000995,
+      "marketCap": 69000,
+      "volume24h": 200,
+      "change1h": 0,
+      "change24h": 0,
+      "chain": "BNB"
+    },
+    {
+      "id": "5th-scape",
+      "name": "5th Scape",
+      "symbol": "$5scape",
+      "image": "https://coin-images.coingecko.com/coins/images/54304/large/Untitled_design_%2816%29.png",
+      "price": 0.0000717,
+      "marketCap": 370000,
+      "volume24h": 1415,
+      "change1h": -0.17,
+      "change24h": -0.21,
+      "chain": "SOL"
+    },
+    {
+      "id": "4444-token",
+      "name": "4444",
+      "symbol": "4444",
+      "image": "https://coin-images.coingecko.com/coins/images/55067/large/4444.jpg",
+      "price": 0.0000249,
+      "marketCap": 24000,
+      "volume24h": 2.4,
+      "change1h": 0,
+      "change24h": -0.01,
+      "chain": "BNB"
+    },
+    {
+      "id": "0x-leverage",
+      "name": "0x Leverage",
+      "symbol": "oxl",
+      "image": "https://coin-images.coingecko.com/coins/images/31977/large/Ox.jpeg",
+      "price": 0.000323,
+      "marketCap": 320000,
+      "volume24h": 12,
+      "change1h": 0,
+      "change24h": 0,
+      "chain": "SOL"
+    }
+  ]
+}
