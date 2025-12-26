@@ -2,6 +2,10 @@ export type TokenCategory = 'new' | 'final' | 'migrated';
 
 export type PriceDirection = 'up' | 'down' | 'neutral';
 
+export type ChainType = 'BNB' | 'SOL';
+
+export type ChainFilter = 'All' | 'BNB' | 'SOL';
+
 export interface RawTokenData {
   readonly id: string;
   readonly name: string;
@@ -12,6 +16,7 @@ export interface RawTokenData {
   readonly volume24h: number;
   readonly change1h: number;
   readonly change24h: number;
+  readonly chain: ChainType;
 }
 
 export interface RawTokensData {
@@ -33,6 +38,7 @@ export interface Token {
   readonly change1h: number;
   readonly change24h: number;
   readonly category: TokenCategory;
+  readonly chain: ChainType;
 }
 
 export type TokenMap = Readonly<Record<string, Token>>;

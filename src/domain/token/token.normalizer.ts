@@ -5,6 +5,7 @@ import type {
   TokenCategory,
   PriceDirection,
   TokensByCategory,
+  ChainType,
 } from './token.types';
 
 function calculatePriceDirection(
@@ -37,6 +38,7 @@ function normalizeInitialToken(
     change1h: rawToken.change1h,
     change24h: rawToken.change24h,
     category,
+    chain: rawToken.chain as ChainType,
   };
 }
 
