@@ -5,6 +5,7 @@ import Providers from './providers'
 export const metadata: Metadata = {
   title: 'pulseboard',
   description: 'Token trading dashboard',
+  viewport: 'width=device-width, initial-scale=1',
 }
 
 export default function RootLayout({

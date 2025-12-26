@@ -5,7 +5,6 @@ import type {
   TokenCategory,
   PriceDirection,
   TokensByCategory,
-  TokenMap,
 } from './token.types';
 
 function calculatePriceDirection(
@@ -25,8 +24,6 @@ function normalizeInitialToken(
   rawToken: RawTokenData,
   category: TokenCategory
 ): Token {
-  const priceDirection = calculatePriceDirection(rawToken.price, rawToken.price);
-
   return {
     id: rawToken.id,
     name: rawToken.name,
@@ -34,7 +31,7 @@ function normalizeInitialToken(
     image: rawToken.image,
     price: rawToken.price,
     prevPrice: rawToken.price,
-    priceDirection,
+    priceDirection: 'neutral',
     marketCap: rawToken.marketCap,
     volume24h: rawToken.volume24h,
     change1h: rawToken.change1h,
@@ -43,25 +40,11 @@ function normalizeInitialToken(
   };
 }
 
-function normalizeTokensByCategory(
-  rawData: RawTokensData
-): TokensByCategory {
-  const newTokens = rawData.new.map((token) =>
-    normalizeInitialToken(token, 'new')
-  );
-
-  const finalTokens = rawData.final.map((token) =>
-    normalizeInitialToken(token, 'final')
-  );
-
-  const migratedTokens = rawData.migrated.map((token) =>
-    normalizeInitialToken(token, 'migrated')
-  );
-
+function normalizeTokensByCategory(rawData: RawTokensData): TokensByCategory {
   return {
-    new: newTokens,
-    final: finalTokens,
-    migrated: migratedTokens,
+    new: rawData.new.map((token) => normalizeInitialToken(token, 'new')),
+    final: rawData.final.map((token) => normalizeInitialToken(token, 'final')),
+    migrated: rawData.migrated.map((token) => normalizeInitialToken(token, 'migrated')),
   };
 }
 
@@ -73,33 +56,39 @@ function flattenTokens(tokensByCategory: TokensByCategory): readonly Token[] {
   ];
 }
 
-function createTokenMap(tokens: readonly Token[]): TokenMap {
+function createTokenMap(tokens: readonly Token[]): Readonly<Record<string, Token>> {
   return Object.fromEntries(
     tokens.map((token) => [token.id, token])
-  ) as TokenMap;
+  );
 }
 
-function updateTokenPrice(token: Token, newPrice: number): Token {
-  const priceDirection = calculatePriceDirection(newPrice, token.price);
+interface UpdateTokenPriceParams {
+  newPrice: number;
+  newMarketCap: number;
+  newVolume24h: number;
+  newChange1h: number;
+  newChange24h: number;
+}
+
+function updateTokenPrice(
+  existingToken: Token,
+  params: UpdateTokenPriceParams
+): Token {
+  const priceDirection = calculatePriceDirection(params.newPrice, existingToken.price);
 
   return {
-    id: token.id,
-    name: token.name,
-    symbol: token.symbol,
-    image: token.image,
-    price: newPrice,
-    prevPrice: token.price,
+    ...existingToken,
+    price: params.newPrice,
+    prevPrice: existingToken.price,
     priceDirection,
-    marketCap: token.marketCap,
-    volume24h: token.volume24h,
-    change1h: token.change1h,
-    change24h: token.change24h,
-    category: token.category,
+    marketCap: params.newMarketCap,
+    volume24h: params.newVolume24h,
+    change1h: Math.max(-50, Math.min(50, params.newChange1h)),
+    change24h: Math.max(-50, Math.min(50, params.newChange24h)),
   };
 }
 
 export {
-  calculatePriceDirection,
   normalizeInitialToken,
   normalizeTokensByCategory,
   flattenTokens,

@@ -38,16 +38,32 @@ function initializeTokensReducer(
   };
 }
 
+interface UpdateTokenPricePayload {
+  tokenId: string;
+  newPrice: number;
+  newMarketCap: number;
+  newVolume24h: number;
+  newChange1h: number;
+  newChange24h: number;
+}
+
 function updateTokenPriceReducer(
   state: TokenState,
-  action: PayloadAction<{ tokenId: string; newPrice: number }>
+  action: PayloadAction<UpdateTokenPricePayload>
 ): TokenState {
   const existingToken = state.tokens[action.payload.tokenId];
   if (!existingToken) {
     return state;
   }
 
-  const updatedToken = updateTokenPrice(existingToken, action.payload.newPrice);
+  const updatedToken = updateTokenPrice(existingToken, {
+    newPrice: action.payload.newPrice,
+    newMarketCap: action.payload.newMarketCap,
+    newVolume24h: action.payload.newVolume24h,
+    newChange1h: action.payload.newChange1h,
+    newChange24h: action.payload.newChange24h,
+  });
+
   const updatedTokens: Record<string, Token> = {
     ...state.tokens,
     [action.payload.tokenId]: updatedToken,
@@ -73,31 +89,27 @@ function sortTokensReducer(
   state: TokenState,
   action: PayloadAction<{ sortBy: 'marketCap' | 'volume' | 'change1h' | 'change24h' }>
 ): TokenState {
-  const tokenArray = Object.values(state.tokens);
-  let sortedTokens: readonly Token[];
-  
-  // Note: Sorting is global across all categories.
-  // All columns share the same sortedIds order.
-  // This means clicking sort in any column affects the order in all columns.
+  const tokens = Object.values(state.tokens);
+  let sorted: readonly Token[];
 
   switch (action.payload.sortBy) {
     case 'marketCap':
-      sortedTokens = tokenArray.slice().sort((a, b) => b.marketCap - a.marketCap);
+      sorted = [...tokens].sort((a, b) => b.marketCap - a.marketCap);
       break;
     case 'volume':
-      sortedTokens = tokenArray.slice().sort((a, b) => b.volume24h - a.volume24h);
+      sorted = [...tokens].sort((a, b) => b.volume24h - a.volume24h);
       break;
     case 'change1h':
-      sortedTokens = tokenArray.slice().sort((a, b) => b.change1h - a.change1h);
+      sorted = [...tokens].sort((a, b) => b.change1h - a.change1h);
       break;
     case 'change24h':
-      sortedTokens = tokenArray.slice().sort((a, b) => b.change24h - a.change24h);
+      sorted = [...tokens].sort((a, b) => b.change24h - a.change24h);
       break;
     default:
-      sortedTokens = tokenArray;
+      sorted = tokens;
   }
 
-  const sortedIds = sortedTokens.map((token) => token.id);
+  const sortedIds = sorted.map((token) => token.id);
 
   return {
     ...state,
