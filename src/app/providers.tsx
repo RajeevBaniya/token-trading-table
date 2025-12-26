@@ -7,7 +7,7 @@ import { createStore } from '@/store';
 import type { ReactNode } from 'react';
 
 interface ProvidersProps {
-  children: ReactNode;
+  readonly children: ReactNode;
 }
 
 function Providers({ children }: ProvidersProps) {

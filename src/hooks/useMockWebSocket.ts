@@ -33,6 +33,13 @@ function calculateNewChange24h(currentChange24h: number, priceChangePercent: num
   return currentChange24h + priceChangePercent * 0.15;
 }
 
+function shuffleArray<T>(array: readonly T[]): readonly T[] {
+  return array
+    .map((item) => ({ item, sortKey: Math.random() }))
+    .sort((a, b) => a.sortKey - b.sortKey)
+    .map(({ item }) => item);
+}
+
 function selectRandomTokens(
   tokens: Readonly<Record<string, Token>>,
   count: number
@@ -42,7 +49,7 @@ function selectRandomTokens(
     return [];
   }
 
-  const shuffled = [...tokenArray].sort(() => Math.random() - 0.5);
+  const shuffled = shuffleArray(tokenArray);
   const selectCount = Math.min(count, shuffled.length);
   return shuffled.slice(0, selectCount);
 }
@@ -59,82 +66,90 @@ function useMockWebSocket(intervalMs: number = 2000): void {
   }, [tokens]);
 
   useEffect(() => {
-    function checkAndStart(): void {
+    const timeoutRef: { current: NodeJS.Timeout | null } = { current: null };
+
+    function tick(): void {
+      const currentTokens = tokensRef.current;
+      const count = Object.keys(currentTokens).length;
+
+      if (count === 0) {
+        return;
+      }
+
+      const updateCount = 2 + Math.floor(Math.random() * 2);
+      const selectedTokens = selectRandomTokens(currentTokens, updateCount);
+
+      if (selectedTokens.length === 0) {
+        return;
+      }
+
+      selectedTokens.forEach((token) => {
+        const deltaPercent = generateRandomDelta();
+        const newPrice = calculateNewPrice(token.price, deltaPercent);
+        const priceChangePercent = ((newPrice - token.price) / token.price) * 100;
+
+        const newMarketCap = calculateNewMarketCap(token.marketCap, token.price, newPrice);
+        const newVolume24h = calculateNewVolume(token.volume24h);
+        const newChange1h = calculateNewChange1h(token.change1h, priceChangePercent);
+        const newChange24h = calculateNewChange24h(token.change24h, priceChangePercent);
+
+        console.log(
+          `%c[LIVE UPDATE]%c ${token.symbol}: $${token.price.toFixed(8)} → $${newPrice.toFixed(8)} %c${deltaPercent > 0 ? '↑' : '↓'}${Math.abs(deltaPercent).toFixed(2)}%`,
+          'background: #dc2626; color: white; padding: 3px 8px; border-radius: 4px; font-weight: bold; font-size: 11px',
+          'color: #e5e7eb; margin: 0 4px',
+          deltaPercent > 0 ? 'color: #10b981; font-weight: bold' : 'color: #ef4444; font-weight: bold'
+        );
+
+        dispatch(
+          updateTokenPriceAction({
+            tokenId: token.id,
+            newPrice,
+            newMarketCap,
+            newVolume24h,
+            newChange1h,
+            newChange24h,
+          })
+        );
+      });
+    }
+
+    function startInterval(): void {
       const tokenCount = Object.keys(tokensRef.current).length;
-      
-      if (tokenCount === 0 || hasStartedRef.current) {
-        if (tokenCount === 0 && !hasStartedRef.current) {
-          setTimeout(checkAndStart, 500);
-        }
+
+      if (tokenCount === 0) {
+        timeoutRef.current = setTimeout(startInterval, 500);
+        return;
+      }
+
+      if (hasStartedRef.current) {
         return;
       }
 
       hasStartedRef.current = true;
-
-      function tick(): void {
-        const currentTokens = tokensRef.current;
-        const count = Object.keys(currentTokens).length;
-        
-        if (count === 0) {
-          return;
-        }
-
-        const updateCount = 2 + Math.floor(Math.random() * 2);
-        const selectedTokens = selectRandomTokens(currentTokens, updateCount);
-
-        if (selectedTokens.length === 0) {
-          return;
-        }
-
-        selectedTokens.forEach((token) => {
-          const deltaPercent = generateRandomDelta();
-          const newPrice = calculateNewPrice(token.price, deltaPercent);
-          const priceChangePercent = ((newPrice - token.price) / token.price) * 100;
-          
-          const newMarketCap = calculateNewMarketCap(token.marketCap, token.price, newPrice);
-          const newVolume24h = calculateNewVolume(token.volume24h);
-          const newChange1h = calculateNewChange1h(token.change1h, priceChangePercent);
-          const newChange24h = calculateNewChange24h(token.change24h, priceChangePercent);
-          
-          console.log(
-            `%c[LIVE UPDATE]%c ${token.symbol}: $${token.price.toFixed(8)} → $${newPrice.toFixed(8)} %c${deltaPercent > 0 ? '↑' : '↓'}${Math.abs(deltaPercent).toFixed(2)}%`,
-            'background: #dc2626; color: white; padding: 3px 8px; border-radius: 4px; font-weight: bold; font-size: 11px',
-            'color: #e5e7eb; margin: 0 4px',
-            deltaPercent > 0 ? 'color: #10b981; font-weight: bold' : 'color: #ef4444; font-weight: bold'
-          );
-          
-          dispatch(
-            updateTokenPriceAction({
-              tokenId: token.id,
-              newPrice,
-              newMarketCap,
-              newVolume24h,
-              newChange1h,
-              newChange24h,
-            })
-          );
-        });
-      }
 
       console.log(
         `%c🔴 LIVE UPDATES ACTIVE%c - ${tokenCount} tokens | Updates every ${intervalMs / 1000}s`,
         'background: #dc2626; color: white; padding: 6px 12px; border-radius: 6px; font-weight: bold; font-size: 13px',
         'color: #9ca3af; margin-left: 8px; font-size: 12px'
       );
-      
+
       intervalRef.current = setInterval(tick, intervalMs);
       tick();
-
-      return () => {
-        if (intervalRef.current) {
-          clearInterval(intervalRef.current);
-          intervalRef.current = null;
-        }
-        hasStartedRef.current = false;
-      };
     }
 
-    checkAndStart();
+    startInterval();
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+      hasStartedRef.current = false;
+    };
   }, [dispatch, intervalMs]);
 }
 
