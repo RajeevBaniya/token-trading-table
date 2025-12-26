@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 import type { RootState } from './index';
-import type { Token, TokenCategory } from '@/domain/token/token.types';
+import type { Token, TokenCategory, ChainFilter } from '@/domain/token/token.types';
 
 function selectTokens(state: RootState): Readonly<Record<string, Token>> {
   return state.token.tokens;
@@ -12,6 +12,10 @@ function selectSortedIds(state: RootState): readonly string[] {
 
 function selectActiveCategory(state: RootState): TokenCategory | null {
   return state.token.activeCategory;
+}
+
+function selectChainFilter(state: RootState): ChainFilter {
+  return state.token.chainFilter;
 }
 
 function selectLoading(state: RootState): boolean {
@@ -29,11 +33,16 @@ function selectTokenById(state: RootState, tokenId: string): Token | undefined {
 const selectTokensByCategory = createSelector(
   [
     (state: RootState) => state.token.tokens,
+    (state: RootState) => state.token.chainFilter,
     (_state: RootState, category: TokenCategory) => category,
   ],
-  (tokens, category): readonly Token[] => {
+  (tokens, chainFilter, category): readonly Token[] => {
     const tokenArray = Object.values(tokens);
-    return tokenArray.filter((token) => token.category === category);
+    return tokenArray.filter((token) => {
+      const matchesCategory = token.category === category;
+      const matchesChain = chainFilter === 'All' || token.chain === chainFilter;
+      return matchesCategory && matchesChain;
+    });
   }
 );
 
@@ -50,6 +59,7 @@ export {
   selectTokens,
   selectSortedIds,
   selectActiveCategory,
+  selectChainFilter,
   selectLoading,
   selectError,
   selectTokenById,

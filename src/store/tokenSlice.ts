@@ -1,11 +1,12 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { Token, TokenCategory, TokenMap } from '@/domain/token/token.types';
+import type { Token, TokenCategory, TokenMap, ChainFilter } from '@/domain/token/token.types';
 import { createTokenMap, updateTokenPrice } from '@/domain/token/token.normalizer';
 
 interface TokenState {
   tokens: TokenMap;
   sortedIds: readonly string[];
   activeCategory: TokenCategory | null;
+  chainFilter: ChainFilter;
   loading: boolean;
   error: string | null;
 }
@@ -14,6 +15,7 @@ const initialState: TokenState = {
   tokens: {} as TokenMap,
   sortedIds: [],
   activeCategory: null,
+  chainFilter: 'All',
   loading: false,
   error: null,
 };
@@ -138,6 +140,16 @@ function setErrorReducer(
   };
 }
 
+function setChainFilterReducer(
+  state: TokenState,
+  action: PayloadAction<ChainFilter>
+): TokenState {
+  return {
+    ...state,
+    chainFilter: action.payload,
+  };
+}
+
 const tokenSlice = createSlice({
   name: 'token',
   initialState,
@@ -148,6 +160,7 @@ const tokenSlice = createSlice({
     sortTokens: sortTokensReducer,
     setLoading: setLoadingReducer,
     setError: setErrorReducer,
+    setChainFilter: setChainFilterReducer,
   },
 });
 
@@ -158,6 +171,7 @@ export const {
   sortTokens,
   setLoading,
   setError,
+  setChainFilter,
 } = tokenSlice.actions;
 
 export default tokenSlice.reducer;
