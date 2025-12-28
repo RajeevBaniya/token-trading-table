@@ -1,14 +1,39 @@
-import { WebSocketServer, WebSocket } from 'ws';
-import { readFileSync } from 'fs';
-import { join } from 'path';
+import dotenv from 'dotenv';
+import { resolve, join } from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+
+const envPath = resolve(process.cwd(), '.env');
+const result = dotenv.config({ path: envPath });
+
+if (result.error) {
+  throw new Error(`Failed to load .env file from ${envPath}: ${result.error.message}`);
+}
+
+if (!result.parsed || Object.keys(result.parsed).length === 0) {
+  throw new Error(`.env file at ${envPath} contains no variables. Make sure PORT is set.`);
+}
+
+import { WebSocketServer, WebSocket } from 'ws';
+import { readFileSync } from 'fs';
 import type { RawTokensData, PriceMap, PriceUpdateMessage } from './types';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const PORT = Number(process.env.PORT) || 4001;
+function getPort(): number {
+  const port = process.env.PORT;
+  if (!port) {
+    throw new Error('PORT environment variable is not set');
+  }
+  const portNumber = Number(port);
+  if (isNaN(portNumber) || portNumber <= 0) {
+    throw new Error(`Invalid PORT value: ${port}`);
+  }
+  return portNumber;
+}
+
+const PORT = getPort();
 const UPDATE_INTERVAL_MS = 2000;
 
 function loadMockData(): RawTokensData {
@@ -102,22 +127,16 @@ function simulateMarketUpdate(): void {
     };
     
     broadcast(message);
-    
-    console.log(
-      `[PRICE_UPDATE] ${tokenId}: $${currentPrice.toFixed(8)} → $${newPrice.toFixed(8)} (${deltaPercent > 0 ? '+' : ''}${deltaPercent.toFixed(2)}%)`
-    );
   }
 }
 
 wss.on('connection', (ws: WebSocket) => {
-  console.log('Client connected');
-  
   ws.on('close', () => {
-    console.log('Client disconnected');
+    // Client disconnected
   });
   
-  ws.on('error', (error) => {
-    console.error('WebSocket error:', error);
+  ws.on('error', () => {
+    // WebSocket error handled
   });
 });
 
@@ -125,24 +144,16 @@ const intervalId = setInterval(() => {
   simulateMarketUpdate();
 }, UPDATE_INTERVAL_MS);
 
-console.log(`WebSocket server running on ws://localhost:${PORT}`);
-console.log(`Update interval: ${UPDATE_INTERVAL_MS}ms`);
-console.log(`Initialized ${Object.keys(priceMap).length} tokens`);
-
 process.on('SIGINT', () => {
-  console.log('\nShutting down WebSocket server...');
   clearInterval(intervalId);
   wss.close(() => {
-    console.log('WebSocket server closed');
     process.exit(0);
   });
 });
 
 process.on('SIGTERM', () => {
-  console.log('\nShutting down WebSocket server...');
   clearInterval(intervalId);
   wss.close(() => {
-    console.log('WebSocket server closed');
     process.exit(0);
   });
 });
