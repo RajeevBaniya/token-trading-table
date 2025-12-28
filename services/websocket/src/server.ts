@@ -12,7 +12,7 @@ const PORT = Number(process.env.PORT) || 4001;
 const UPDATE_INTERVAL_MS = 2000;
 
 function loadMockData(): RawTokensData {
-  const filePath = join(__dirname, '..', '..', 'api', 'src', 'data', 'mockCoins.json');
+  const filePath = join(__dirname, 'data', 'mockCoins.json');
   const fileContent = readFileSync(filePath, 'utf-8');
   return JSON.parse(fileContent) as RawTokensData;
 }
