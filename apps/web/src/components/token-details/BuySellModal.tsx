@@ -4,6 +4,8 @@ import { memo, useState, useCallback } from 'react';
 import {
   Dialog,
   DialogContent,
+  DialogTitle,
+  DialogDescription,
 } from '@/components/ui/dialog';
 import type { TokenWithRuntime } from '@/domain/token/token.types';
 
@@ -55,6 +57,12 @@ function BuySellModalComponent({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="bg-gray-900 text-white border-gray-700 max-w-md w-[calc(100%-2rem)] rounded-lg" hideCloseButton>
+        <DialogTitle className="sr-only">
+          {activeTab === 'buy' ? 'Buy' : 'Sell'} {token.symbol}
+        </DialogTitle>
+        <DialogDescription className="sr-only">
+          {activeTab === 'buy' ? 'Purchase' : 'Sell'} {token.name} ({token.symbol}) tokens
+        </DialogDescription>
         <div className="flex flex-col">
           <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-700">
             <h2 className="text-lg font-semibold">

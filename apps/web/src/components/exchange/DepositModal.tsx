@@ -6,6 +6,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
 } from '@/components/ui/dialog';
 import { DepositTab } from './DepositTab';
 import { ConvertTab } from './ConvertTab';
@@ -48,6 +49,9 @@ function DepositModalComponent({ open, onOpenChange }: DepositModalProps): JSX.E
               </svg>
             </button>
           </div>
+          <DialogDescription className="sr-only">
+            Exchange, deposit, or buy tokens through various payment methods
+          </DialogDescription>
         </DialogHeader>
 
         <div className="flex gap-1.5 sm:gap-2 mb-4 sm:mb-6">

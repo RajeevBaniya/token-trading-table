@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 import {
   Dialog,
   DialogContent,
+  DialogTitle,
+  DialogDescription,
 } from '@/components/ui/dialog';
 import type { TokenWithRuntime } from '@/domain/token/token.types';
 import type { RootState } from '@/store';
@@ -66,6 +68,10 @@ function TokenDetailsModalComponent({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="bg-black text-white border-gray-800 max-w-none w-screen h-screen p-0 m-0 rounded-none left-0 top-0 right-0 bottom-0 translate-x-0 translate-y-0 gap-0 flex flex-col sm:left-[50%] sm:top-[50%] sm:translate-x-[-50%] sm:translate-y-[-50%] sm:right-auto sm:bottom-auto sm:grid sm:gap-4" hideCloseButton>
+        <DialogTitle className="sr-only">Token Details - {token.name}</DialogTitle>
+        <DialogDescription className="sr-only">
+          View detailed information, charts, and trading options for {token.name} ({token.symbol})
+        </DialogDescription>
         <div className="flex flex-col h-full w-full overflow-hidden">
           <div className="flex items-center justify-between bg-black border-b border-gray-800 px-4 py-2">
             <div className="flex items-center gap-4">
