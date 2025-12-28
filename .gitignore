@@ -1,15 +1,19 @@
-# dependencies
+# Dependencies
 node_modules/
 
-# Next.js
+# Build outputs
 .next/
 out/
+dist/
+build/
 
-# environment variables
+# Environment variables
 .env
+.env.local
 .env*.local
 
-# debug logs
+# Logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -21,3 +25,10 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+.cache/
+
