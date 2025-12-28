@@ -1,41 +1,16 @@
-import dotenv from 'dotenv';
-import { resolve, join } from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-
-const envPath = resolve(process.cwd(), '.env');
-const result = dotenv.config({ path: envPath });
-
-if (result.error) {
-  throw new Error(`Failed to load .env file from ${envPath}: ${result.error.message}`);
-}
-
-if (!result.parsed || Object.keys(result.parsed).length === 0) {
-  throw new Error(`.env file at ${envPath} contains no variables. Make sure PORT is set.`);
-}
-
 import express from 'express';
 import cors from 'cors';
 import { readFileSync } from 'fs';
+import { join } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 import type { RawTokensData, ApiResponse } from './types';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-function getPort(): number {
-  const port = process.env.PORT;
-  if (!port) {
-    throw new Error('PORT environment variable is not set');
-  }
-  const portNumber = Number(port);
-  if (isNaN(portNumber) || portNumber <= 0) {
-    throw new Error(`Invalid PORT value: ${port}`);
-  }
-  return portNumber;
-}
-
 const app = express();
-const PORT = getPort();
+const PORT = Number(process.env.PORT) || 4000;
 
 app.use(cors());
 
@@ -70,6 +45,8 @@ app.get('/health', (_req, res) => {
 });
 
 app.listen(PORT, () => {
-  // Server started successfully
+  console.log(`REST API server running on http://localhost:${PORT}`);
+  console.log(`Health check: http://localhost:${PORT}/health`);
+  console.log(`Tokens endpoint: http://localhost:${PORT}/tokens`);
 });
 
