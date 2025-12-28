@@ -1,7 +1,16 @@
 import type { ParsedAction } from './messageParser';
 import { parseWebSocketMessage } from './messageParser';
 
-const WS_URL = process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost:4001';
+function getWebSocketUrl(): string {
+  const url = process.env.NEXT_PUBLIC_WS_URL;
+  if (!url) {
+    throw new Error('NEXT_PUBLIC_WS_URL environment variable is not set');
+  }
+  return url;
+}
+
+const WS_URL = getWebSocketUrl();
+
 const RECONNECT_DELAY_MS = 3000;
 const MAX_RECONNECT_ATTEMPTS = 10;
 
