@@ -149,12 +149,12 @@ function TokenDetailsModalComponent({
               </button>
             </div>
 
-            <div className="flex-1 min-h-0 relative">
+            <div className="flex-1 min-h-0 relative overflow-hidden pb-20">
               <TokenChart series={series} currentPrice={currentPrice} isUp={isUp} />
             </div>
 
             {/* Mobile Trade Button - Fixed at Bottom */}
-            <div className="px-2 py-3 bg-black border-t border-gray-800 flex-shrink-0">
+            <div className="fixed bottom-0 left-0 right-0 px-2 py-3 bg-black border-t border-gray-800 flex-shrink-0 z-[70] md:hidden">
               <button
                 className="w-full py-3 rounded-lg font-medium text-sm bg-blue-700 hover:bg-blue-600 active:bg-blue-800 text-white transition-colors duration-200 shadow-lg"
                 onClick={handleTradeClick}
