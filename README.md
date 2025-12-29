@@ -14,8 +14,8 @@
 - **Real-time Price Updates**: price updates via WebSocket every 2 seconds (mock data is used services/data/
     mockCoins.json)
 - **Interactive Charts**: Dynamic price charts with smooth transitions
-- **Token Categories**: Organized into New Pairs, Final Stretch, and Migrated tokens
-- **Responsive Design**: Fully responsive from 320px to 4K displays
+- **Token Categories**: Organized into New Pairs, Final Stretch and Migrated tokens
+- **Responsive Design**: Fully responsive upto 320px
 - **Sorting & Filtering**: Sort by market cap, volume, 1h/24h changes
 - **Token Details Modal**: Comprehensive token information with trading options
 
