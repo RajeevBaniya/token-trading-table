@@ -6,7 +6,6 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { PriceCell } from './PriceCell';
-import { ChangeIndicator } from './ChangeIndicator';
 
 interface TokenRowProps {
   token: TokenWithRuntime;

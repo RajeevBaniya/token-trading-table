@@ -8,7 +8,6 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/ui/dialog';
-import type { TokenWithRuntime } from '@/domain/token/token.types';
 import type { RootState } from '@/store';
 import { selectTokenWithRuntimeById } from '@/store/tokenSelectors';
 import { useLivePriceSeries } from '@/hooks/useLivePriceSeries';

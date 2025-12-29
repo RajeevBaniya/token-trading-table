@@ -22,13 +22,13 @@ function useWebSocket(): void {
         }
       },
       onConnect: () => {
-        console.log('[WebSocket] Connected to price update server');
+        // WebSocket connected
       },
       onDisconnect: () => {
-        console.log('[WebSocket] Disconnected from price update server');
+        // WebSocket disconnected
       },
-      onError: (error) => {
-        console.error('[WebSocket] Error:', error);
+      onError: () => {
+        // WebSocket error handled
       },
     });
 

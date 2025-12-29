@@ -81,7 +81,7 @@ interface UpdateTokenPriceResult {
 
 function updateTokenPrice(
   existingDomain: Token,
-  existingRuntime: TokenRuntime,
+  _existingRuntime: TokenRuntime,
   newPrice: number
 ): UpdateTokenPriceResult {
   const priceDirection = calculatePriceDirection(newPrice, existingDomain.price);
