@@ -1,5 +1,7 @@
 # Token Trading Table
 
+**Live Demo**: [https://pulsetable.vercel.app/](https://pulsetable.vercel.app/)
+
 ## Tech Stack
 
 - **Frontend**: Next.js 14 (App Router), React 18, TypeScript
