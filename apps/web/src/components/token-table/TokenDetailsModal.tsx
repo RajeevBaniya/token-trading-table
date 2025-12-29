@@ -66,7 +66,7 @@ function TokenDetailsModalComponent({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="bg-black text-white border-gray-800 max-w-none w-screen h-screen p-0 m-0 rounded-none left-0 top-0 right-0 bottom-0 translate-x-0 translate-y-0 gap-0 flex flex-col sm:left-[50%] sm:top-[50%] sm:translate-x-[-50%] sm:translate-y-[-50%] sm:right-auto sm:bottom-auto sm:grid sm:gap-4" hideCloseButton>
+      <DialogContent className="bg-black text-white border-gray-800 max-w-none w-screen h-screen p-0 m-0 rounded-none left-0 top-0 right-0 bottom-0 translate-x-0 translate-y-0 gap-0 flex flex-col z-[60] sm:left-[50%] sm:top-[50%] sm:translate-x-[-50%] sm:translate-y-[-50%] sm:right-auto sm:bottom-auto sm:grid sm:gap-4 sm:z-50" hideCloseButton>
         <DialogTitle className="sr-only">Token Details - {token.name}</DialogTitle>
         <DialogDescription className="sr-only">
           View detailed information, charts, and trading options for {token.name} ({token.symbol})
@@ -154,9 +154,9 @@ function TokenDetailsModalComponent({
             </div>
 
             {/* Mobile Trade Button - Fixed at Bottom */}
-            <div className="px-2 py-1.5 bg-black border-t border-gray-800 flex-shrink-0">
+            <div className="px-2 py-3 bg-black border-t border-gray-800 flex-shrink-0">
               <button
-                className="w-full py-2 rounded font-medium text-sm bg-blue-700 hover:bg-blue-600 text-white transition-colors duration-200"
+                className="w-full py-3 rounded-lg font-medium text-sm bg-blue-700 hover:bg-blue-600 active:bg-blue-800 text-white transition-colors duration-200 shadow-lg"
                 onClick={handleTradeClick}
               >
                 Trade
