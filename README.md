@@ -76,7 +76,7 @@ NEXT_PUBLIC_WS_URL=ws:websocket_url
 ```
 
 
-## System Architecture
+## Architecture
 
 ![Architecture Diagram](Architecture.png)
 
