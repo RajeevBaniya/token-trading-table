@@ -31,7 +31,7 @@ function PriceCell({ price, priceDirection }: PriceCellProps) {
   };
 
   return (
-    <div className={`text-xs sm:text-sm font-semibold rounded px-1.5 sm:px-2 py-0.5 sm:py-1 inline-block ${getColorClasses()}`}>
+    <div className={`text-[10px] sm:text-sm font-semibold rounded px-1 sm:px-2 py-0.5 sm:py-1 inline-block ${getColorClasses()}`}>
       {formatPrice(price)}
     </div>
   );
