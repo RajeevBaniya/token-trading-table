@@ -12,7 +12,11 @@ const __dirname = dirname(__filename);
 const app = express();
 const PORT = Number(process.env.PORT) || 4000;
 
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+}));
 
 function loadMockData(): RawTokensData {
   const filePath = join(__dirname, 'data', 'mockCoins.json');

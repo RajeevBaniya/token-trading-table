@@ -3,15 +3,9 @@ import { resolve, join } from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
-const envPath = resolve(process.cwd(), '.env');
-const result = dotenv.config({ path: envPath });
-
-if (result.error) {
-  throw new Error(`Failed to load .env file from ${envPath}: ${result.error.message}`);
-}
-
-if (!result.parsed || Object.keys(result.parsed).length === 0) {
-  throw new Error(`.env file at ${envPath} contains no variables. Make sure PORT is set.`);
+if (process.env.NODE_ENV !== 'production') {
+  const envPath = resolve(process.cwd(), '.env');
+  dotenv.config({ path: envPath });
 }
 
 import { WebSocketServer, WebSocket } from 'ws';
